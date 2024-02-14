@@ -4,24 +4,26 @@ Rode o comando: `git clone https://github.com/seu-usuario/seu-projeto.git`
 
 Depois entre na pasta do projeto: `cd seu-projeto`
 
-## Criar e Ativar um Ambiente Virtual:
+## Crie e Ative um Ambiente Virtual:
 Rode o comando: `python -m venv venv`
+Depois: `source venv/bin/activate  # No Windows: venv\Scripts\activate`
 
-Rode o comando: `source venv/bin/activate  # No Windows: venv\Scripts\activate`
-
-## Instalar Dependências:
+## Instale as Dependências:
 Rode o comando: `pip install -r requirements.txt`
 
-## Realizar as Migrações do Banco de Dados:
-Rode o comando: `python manage.py migrate`
-
-## Criar um Superusuário:
+## Crie um Superusuário:
 Rode o comando: `python manage.py createsuperuser`
 
-## Executar o Servidor Localmente:
+## Execute as Migrações:
+Rode o comando: `python manage.py makemigrations`
+
+## Realize as Migrações do Banco de Dados:
+Rode o comando: `python manage.py migrate`
+
+## Execute o Servidor Localmente:
 Rode o comando: `python manage.py runserver`
 
-## Criar Dados Falsos Para Teste:
+## Crie Dados Falsos Para Teste:
 Rode o comando: `python cria_cadastros.py`
 
 ## Licença
