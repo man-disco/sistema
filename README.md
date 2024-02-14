@@ -2,7 +2,7 @@
 ## Clonar o Repositório:
 Rode o comando: `git clone https://github.com/seu-usuario/seu-projeto.git`
 
-Depois: `cd seu-projeto`
+Depois entre na pasta do projeto: `cd seu-projeto`
 
 ## Criar e Ativar um Ambiente Virtual:
 Rode o comando: `python -m venv venv`
