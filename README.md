@@ -21,5 +21,8 @@ Rode o comando: `python manage.py createsuperuser`
 ## Executar o Servidor Localmente:
 Rode o comando: `python manage.py runserver`
 
+## Criar Dados Falsos Para Teste:
+Rode o comando: `python cria_cadastros.py`
+
 ## Licença
 Este projeto está sob a licença MIT. Consulte o arquivo LICENSE para mais detalhes.
