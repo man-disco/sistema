@@ -1,0 +1,20 @@
+{% extends 'dados/base.html' %}
+
+{% block title %}
+    Compras de {{ cliente.nome }}
+{% endblock title %}
+
+{% block content %}
+    <h2>Compras de {{ cliente.nome }}</h2>
+    
+    {% for venda in vendas %}
+        <ul>
+            <li>Produto: {{ venda.produto }}</li>
+            <li>Valor: R$ {{ venda.valor_produto | floatformat:2 }}</li>
+            <li>Vendido em: {{ venda.data_da_venda }}</li>
+        </ul>
+    {% empty %}
+        <p>Não existem vendas para este cadastro...</p>
+    {% endfor %}
+
+{% endblock content %}

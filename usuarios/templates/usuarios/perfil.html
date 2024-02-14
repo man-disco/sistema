@@ -1,0 +1,59 @@
+{% extends 'dados/base.html' %}
+
+{% load humanize %}
+{% load i18n %} 
+
+{% block title %}Meu Perfil{% endblock title %}
+
+{% block content %}
+    <h2>Seus dados pessoais:</h2>
+    <ul>
+        <li>Nome de usuário: {{user.username}}</li>
+        <li>Primeiro Nome: {{user.first_name}}</li>
+        <li>Sobrenome: {{user.last_name}}</li>
+        <li>Email: {{user.email}}</li>
+        <li>Criado em: {{user.date_joined | date:'d/m/y (l) - H:m:s'}}</li>
+    </ul>
+    <h4>Suas permissões:</h4>
+        {% comment %}
+            So mostra as permissões se o usuário logado tiver alguma do módulo e de forma organizada em lista
+        {% endcomment %}
+    <ul>
+        {% if perms.cadastros %}
+            <li><h4>Cadastros</h4></li>
+            <ul id="permissions_cadastros">
+                {% if perms.cadastros.add_cadastro %}
+                    <li>Pode adicionar cadastros.</li>
+                {% endif %}
+                {% if perms.cadastros.view_cadastro %}
+                    <li>Pode visualizar cadastros.</li>
+                {% endif %}
+                {% if perms.cadastros.change_cadastro %}
+                    <li>Pode alterar cadastros.</li>
+                {% endif %}
+                {% if perms.cadastros.delete_cadastro %}
+                    <li>Pode deletar cadastros.</li>
+                {% endif %}
+            </ul>
+        {% endif %}
+        {% if perms.vendas %}
+            <li><h4>Vendas</h4></li>
+            <ul id="permissions_vendas">
+                {% if perms.vendas.add_venda %}
+                    <li>Pode adicionar vendas.</li>
+                {% endif %}
+                {% if perms.vendas.view_venda %}
+                    <li>Pode visualizar vendas.</li>
+                {% endif %}
+                {% if perms.vendas.change_venda %}
+                    <li>Pode alterar vendas.</li>
+                {% endif %}
+                {% if perms.vendas.delete_venda %}
+                    <li>Pode deletar vendas.</li>
+                {% endif %}
+            </ul>
+        {% endif %}
+    </ul>
+        
+{% endblock content %}
+

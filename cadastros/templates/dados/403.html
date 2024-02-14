@@ -1,0 +1,9 @@
+{% block content %}
+    <div id="erro_403">
+        <title>Acesso Negado</title>
+        <h1>Erro 403 - Oops, você não deveria estar nesta página...</h1>
+        <h4>Você não tem permissões para acessar este recurso.</h4>
+        {{ exception }}
+        <a href="{% url 'index' %}">Me leve de volta!</a>
+    </div>
+{% endblock content %}

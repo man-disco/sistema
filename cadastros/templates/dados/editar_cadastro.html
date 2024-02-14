@@ -1,0 +1,38 @@
+{% extends 'dados/base.html' %}
+
+{% block title %}Editar Cadastro{% endblock title %}
+
+{% block content %}
+    <div>
+        <h2>Editar cadastro</h2>
+        <a href="{% url 'deletar_cadastro' cadastro.id %}">Deletar Cadastro</a>
+        <p>Ultima alteração: {{ cadastro.alterado_em }} - {{ cadastro.alterado_por | capfirst }}</p>
+        <form href="." method="post">
+            {% csrf_token %}
+            {% for input in form %}
+                <ul>
+                    {% if input.errors %}
+                        {% for error in input.errors  %}
+                            <strong><p>{{ error }}</p></strong>
+                        {% endfor %}
+                    {% endif %}
+                    {{ input.label }}
+                    <br>
+                    {{ input }}
+                </ul>
+            {% endfor %}
+            <input type="submit" value="Salvar">
+        </form>
+
+        <p>
+            <a href="{% url 'cadastros' %}">Voltar</a>
+        </p>
+    </div>
+    <script>
+        $(document).ready(function() {
+            // Aplica a máscara pro campo 'data_nascimento' e 'telefone'.
+            $('#id_data_nascimento').mask('00/00/0000');
+            $('#id_telefone').mask('+00 (00) 00000-0000');
+        });
+    </script>
+{% endblock content %}

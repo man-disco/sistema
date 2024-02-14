@@ -1,0 +1,25 @@
+{% extends 'dados/base.html' %}
+
+{% block title %}Resultados da Pesquisa: {{ pesquisa }}{% endblock title %}
+
+{% block content %}
+    <form id="barra_pesquisa" action="{% url 'pesquisa' %}" method="get">
+        {% csrf_token %}
+        <select name="filtro" id="filtro">
+            <option selected>{{ filtro }}</option>
+            <option>ID</option>
+            <option>Nome</option>
+            <option>Endereço</option>
+        </select>
+        <input name="query" type="text" value="{{ pesquisa }}" placeholder="Pesquisar" required>
+        <button action="submit">Pesquisar</button>
+    </form>
+    <h2>Resultados da pesquisa por {{ filtro }}: {{ pesquisa }}</h2>
+    <ul>
+    {% for pessoa in resultado %}
+        <li><a href="{% url 'editar_cadastro' pessoa.id %}">{{ pessoa }}</li>
+    {% empty %}
+        Não foi encontrado nenhum resultado.
+    {% endfor %}
+    </ul>
+{% endblock content %}

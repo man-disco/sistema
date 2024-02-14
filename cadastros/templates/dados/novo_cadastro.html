@@ -1,0 +1,35 @@
+{% extends 'dados/base.html' %}
+
+{% block title %}Criar Novo Cadastro{% endblock title %}
+
+{% block content %}
+    <div>
+        <h2>Criar Novo Cadastro</h2>
+        <form href="." method="post">
+            {% csrf_token %}
+            {% for input in form %}
+                <ul>
+                    {% if input.errors %}
+                        {% for error in input.errors  %}
+                            <strong><p>{{ error | title }}</p></strong>
+                        {% endfor %}
+                    {% endif %}
+                    {{ input.label }}:
+                    <br>
+                    {{ input }}
+                </ul>
+            {% endfor %}
+            <input type="submit" value="Salvar">
+        </form>
+    </div>
+    <script>
+        $(document).ready(function() {
+            // Aplica a máscara pro campo 'data_nascimento' e 'telefone'.
+            $('#id_data_nascimento').mask('00/00/0000');
+            $('#id_telefone').mask('(00) 00000-0000');
+        });
+    </script>
+    <p>
+        <a href="{% url 'cadastros' %}">Voltar</a>
+    </p>
+{% endblock content %}

@@ -1,0 +1,10 @@
+{% extends 'dados/base.html' %}
+{% block content %}
+    <h2>Olá {{ request.user | capfirst }}</h2>{{ data_atual }}
+    <div class="menu">
+        <a href="{% url 'cadastros' %}">Cadastros</a>
+        <a href="{% url 'perfil' %}">Meu Perfil</a>
+        <a href="{% url 'vendas' %}">Vendas</a>
+        <a href="{% url 'logout' %}">Sair</a>
+    </div>
+{% endblock content %}
