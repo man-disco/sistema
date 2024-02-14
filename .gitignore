@@ -86,6 +86,7 @@ __pycache__/
 *-venv/
 local_settings.py
 
+# Stuff
 .env
 db.sqlite3
 *.db
