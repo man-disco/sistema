@@ -1,5 +1,5 @@
-## Como Instalar e Executar o Projeto
-#### Clonar o Repositório:
+# Como Instalar e Executar o Projeto
+## Clonar o Repositório:
 Rode o comando: `git clone https://github.com/seu-usuario/seu-projeto.git`
 
 Depois: `cd seu-projeto`
