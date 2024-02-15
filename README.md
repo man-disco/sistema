@@ -23,10 +23,10 @@ Rode o comando: `python manage.py createsuperuser`
 Rode o comando: `python manage.py runserver`
 
 ## Crie Dados Falsos Para Teste:
-Rode o comando: `python cria_cadastros.py
+Rode o comando: `python manage.py shell < cria_cadastros.py`
 
 ## Execute as Migrações:
-Rode o comando: `python manage.py makemigrations`
+Rode o comando: `python manage.py makemigrations
 
 ## Licença
 Este projeto está sob a licença MIT. Consulte o arquivo LICENSE para mais detalhes.
