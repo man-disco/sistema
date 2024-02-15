@@ -7,13 +7,14 @@ from .models import Venda
 
 # Create your views here.
 @login_required(login_url='login')
-@permission_required('view_vendas', raise_exception=True)
+@permission_required('vendas.view_venda', raise_exception=True)
 def index(request):
     """"""
     return HttpResponse("Vendas aqui :)")
 
+
 @login_required(login_url='login')
-@permission_required('view_vendas', raise_exception=True)
+@permission_required('vendas.view_venda', raise_exception=True)
 def visualizar_vendas_cliente(request, cadastro_id):
     """"""
     try:

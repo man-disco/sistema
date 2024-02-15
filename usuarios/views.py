@@ -13,6 +13,7 @@ def deslogar(request):
         logout(request)
         return HttpResponseRedirect(reverse('login'))
 
+
 @login_required(login_url='login')
 def perfil(request):
     """Retorna uma página que mostra informações e permissões de um usuário."""

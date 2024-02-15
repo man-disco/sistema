@@ -3,6 +3,7 @@
 {% block title %}Cadastros{% endblock title %}
 
 {% block content %}
+
     <h2>Cadastros</h2>
     <div id="div_pesquisa">
         <p>
@@ -10,7 +11,7 @@
             <label for="barra_pesquisa">Pesquisar Cadastros:</label>
                 {% csrf_token %}
                 <select name="filtro" id="filtro">
-                    <option disabled selected>Todos</option>
+                    <option selected>Nome</option>
                     <option>ID</option>
                     <option>Nome</option>
                     <option>Endereço</option>
@@ -57,7 +58,5 @@
             {% endfor %}
         </p>
     </div>
-    
 
- 
 {% endblock content %}

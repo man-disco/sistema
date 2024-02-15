@@ -51,7 +51,6 @@ def novo_cadastro(request):
     return render(request, "dados/novo_cadastro.html", context)
 
 
-
 # Se o usuário não tiver a permissão para adicionar (ou visualizar) cadastros, a página retorna um erro 403.
 @permission_required('cadastros.change_cadastro', raise_exception=True)
 def editar_cadastro(request, cadastro_id):
@@ -76,7 +75,7 @@ def editar_cadastro(request, cadastro_id):
 def deletar_cadastro(request, cadastro_id):
     """"""
     cadastro = get_object_or_404(Cadastro, pk=cadastro_id)
-    
+
     if request.method == 'POST':
         form = DeletarCadastro(request.POST)
         # Verifica se os dados informados são válidos, se forem, salva o formulário.
@@ -93,19 +92,18 @@ def resultado_pesquisa(request):
     """Busca um cadastro especifico no sistema."""
     filtro = request.GET.get("filtro")
     pesquisa = request.GET.get("query")
+
     # Cria filtros com base na seleção do usuário e retorna os resultados correspondentes.
     if filtro == "ID":
         resultado = Cadastro.objects.filter(id=pesquisa)
-    elif filtro == "Nome":
+    if filtro == "Nome":
         resultado = Cadastro.objects.filter(Q(nome__icontains=pesquisa))
-    elif filtro == "Endereço":
+    if filtro == "Endereço":
         resultado = Cadastro.objects.filter(Q(endereço__icontains=pesquisa))
-    else:
-        resultado = Cadastro.objects.filter(id=pesquisa) | (Q(nome__contains=pesquisa)) | (Q(endereço__contains=pesquisa))
-        filtro = 'Todos'
+
     context = {'filtro': filtro, 'pesquisa': pesquisa, 'resultado': resultado}
     return render(request, "dados/resultado_busca.html", context)
-            
+
 
 def acesso_negado_usuario(request, exception):
     response = render(request, 'dados/403.html', {'exception': exception})

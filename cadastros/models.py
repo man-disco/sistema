@@ -5,11 +5,13 @@ from phonenumber_field.modelfields import PhoneNumberField
 # Create your models here.
 class Cadastro(models.Model):
     """Modelo que armazena todas as informações de um cadastro."""
+
     OPC_SEXO = [
         ('M','Masculino'),
         ('F', 'Feminino'),
         ('N', 'Nenhuma das opções')
     ]
+    
     nome = models.CharField(max_length=80, blank=False, null=False)
     endereço = models.CharField(max_length=200, unique=True)
     data_nascimento = models.DateField(null=False, blank=False)

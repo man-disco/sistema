@@ -1,18 +1,12 @@
 from faker import Faker
 from random import choice, randint
 from cadastros.models import Cadastro
-import django
-import os
-
-django.setup()
-
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "sistema.settings")
 
 
 OPC_SEXO = ['M', 'F', 'N']
-
 fake = Faker('pt_BR')
-from random import choice, randint
+
+
 def gera_numero_telefone():
     """"""
     códigos = [21, 34, 22, 19, 11, 67]
@@ -22,6 +16,7 @@ def gera_numero_telefone():
     número_formatado = f"({código_sel}) {primeira_parte}-{segunda_parte}"
     return número_formatado
 
+
 def gera_cadastros(quantidade=20):
     """Gera uma quantia de cadastros falsos para popular o banco de dados."""
     for _ in range(quantidade):
@@ -30,11 +25,11 @@ def gera_cadastros(quantidade=20):
         sexo = choice(OPC_SEXO)
         data_nascimento = fake.date_of_birth()
         telefone = gera_numero_telefone()
-        
 
         cadastro = Cadastro.objects.create(nome=nome, endereço=endereço, sexo=sexo, telefone=telefone, data_nascimento=data_nascimento)
 
-gera_cadastros(20)
+
+gera_cadastros()
         
      
 
