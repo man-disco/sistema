@@ -12,14 +12,14 @@ Depois: `source venv/bin/activate  # No Windows: venv\Scripts\activate`
 ## Instale as Dependências:
 Rode o comando: `pip install -r requirements.txt`
 
+## Realize as Migrações do Banco de Dados:
+Rode o comando: `python manage.py migrate`
+
 ## Crie um Superusuário:
 Rode o comando: `python manage.py createsuperuser`
 
 ## Execute as Migrações:
 Rode o comando: `python manage.py makemigrations`
-
-## Realize as Migrações do Banco de Dados:
-Rode o comando: `python manage.py migrate`
 
 ## Execute o Servidor Localmente:
 Rode o comando: `python manage.py runserver`
