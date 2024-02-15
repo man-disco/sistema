@@ -9,7 +9,7 @@ Rode o comando: `python -m venv venv`
 
 Depois: `source venv/bin/activate`
 
-No Windows: `venv\Scripts\activate`
+No Windows: `venv\Scripts\activate.ps1`
 
 ## Instale as Dependências:
 Rode o comando: `pip install -r requirements.txt`
