@@ -7,7 +7,8 @@ Depois entre na pasta do projeto: `cd seu-projeto`
 ## Crie e Ative um Ambiente Virtual:
 Rode o comando: `python -m venv venv`
 
-Depois: `source venv/bin/activate  # No Windows: venv\Scripts\activate`
+Depois: `source venv/bin/activate`
+No Windows: venv\Scripts\activate`
 
 ## Instale as Dependências:
 Rode o comando: `pip install -r requirements.txt`
@@ -18,14 +19,14 @@ Rode o comando: `python manage.py migrate`
 ## Crie um Superusuário:
 Rode o comando: `python manage.py createsuperuser`
 
-## Execute as Migrações:
-Rode o comando: `python manage.py makemigrations`
-
 ## Execute o Servidor Localmente:
 Rode o comando: `python manage.py runserver`
 
 ## Crie Dados Falsos Para Teste:
-Rode o comando: `python cria_cadastros.py`
+Rode o comando: `python cria_cadastros.py
+
+## Execute as Migrações:
+Rode o comando: `python manage.py makemigrations`
 
 ## Licença
 Este projeto está sob a licença MIT. Consulte o arquivo LICENSE para mais detalhes.
