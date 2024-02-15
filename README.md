@@ -8,7 +8,7 @@ Depois entre na pasta do projeto: `cd seu-projeto`
 Rode o comando: `python -m venv venv`
 
 Depois: `source venv/bin/activate`
-No Windows: venv\Scripts\activate`
+No Windows: `venv\Scripts\activate`
 
 ## Instale as Dependências:
 Rode o comando: `pip install -r requirements.txt`
