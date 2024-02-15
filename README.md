@@ -2,7 +2,7 @@
 ## Clonar o Repositório:
 Rode o comando: `git clone https://github.com/seu-usuario/seu-projeto.git`
 
-Depois entre na pasta do projeto: `cd seu-projeto`
+Depois entre na pasta do projeto: `cd sistema-cad/sistema`
 
 ## Crie e Ative um Ambiente Virtual:
 Rode o comando: `python -m venv venv`
