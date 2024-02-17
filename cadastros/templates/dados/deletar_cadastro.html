@@ -1,0 +1,31 @@
+{% extends 'dados/base.html' %}
+
+{% block title %}Deletar Cadastro{% endblock title %}
+
+{% block content %}
+    <h2>Deletar cadastro?</h2>
+    <h3>Cuidado!</h3>
+    <p style="color: red; text-decoration: underline;">
+        Essa ação é imediata e irreversível!
+    </p>
+    Revise as informações do usuário abaixo:
+    <ul>
+        <li>ID: {{ cadastro.id }}</li>
+        <li>Nome: {{ cadastro.nome }}</li>
+        <li>Data de Nascimento: {{ cadastro.data_nascimento }}
+    </ul>
+
+    <form href="." method="POST">
+        {% csrf_token %}
+        <input type="hidden", value="{{ cadastro.id }}", name="deletar">
+        <h4>Deseja mesmo deletar este cadastro?</h4>
+        <button action="submit">Confirmar</button>
+    </form>
+
+    <p>
+        <a href="{% url 'cadastros' %}">
+            <button>Voltar</button>
+        </a>
+    </p>
+
+{% endblock content %}

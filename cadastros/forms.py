@@ -20,7 +20,7 @@ class NovoCadastro(forms.ModelForm):
             'data_nascimento': ['%m/%d/%Y'],
         }
 
-class DeletarCadastro(forms.BaseModelForm):
+class DeletarCadastro(forms.Form):
     """Deleta um cadastro."""
     
-    model = Cadastro
+    deletar = forms.DurationField()

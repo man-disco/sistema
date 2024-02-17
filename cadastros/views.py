@@ -71,19 +71,20 @@ def editar_cadastro(request, cadastro_id):
     return render(request, "dados/editar_cadastro.html", context)
 
 
-@permission_required('cadastros.delete_cadastro')
+@login_required(login_url='login')
+# Se o usuário não tiver a permissão para deletar cadastros, a página retorna um erro 403.
+@permission_required('cadastros.delete_cadastro', raise_exception=True)
 def deletar_cadastro(request, cadastro_id):
-    """"""
+    """Deleta um registro no banco de dados."""
+    
+    # Verifica se o ID do cadastro a ser editado é válido, se não for, mostra um erro 404.
     cadastro = get_object_or_404(Cadastro, pk=cadastro_id)
+    if request.method == 'POST' and 'deletar' in request.POST:
+        cadastro.delete()
+        return HttpResponseRedirect(reverse('cadastros'))
 
-    if request.method == 'POST':
-        form = DeletarCadastro(request.POST)
-        # Verifica se os dados informados são válidos, se forem, salva o formulário.
-        if form.is_valid():
-            form.save()
-            HttpResponseRedirect(reverse('cadastros'))
-    else:
-        form = DeletarCadastro()
+    context = {'cadastro': cadastro}
+    return render(request, "dados/deletar_cadastro.html", context)
 
 
 @login_required(login_url='login')
