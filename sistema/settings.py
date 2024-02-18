@@ -114,13 +114,13 @@ LOGGING = {
         "file": {
             "level": "DEBUG",
             "class": "logging.FileHandler",
-            "filename": "logs/debug.log",
+            "filename": "logs/django.log",
         },
     },
     "loggers": {
         "django": {
             "handlers": ["file"],
-            "level": "DEBUG",
+            "level": "WARN",
             "propagate": True,
         },
     },
