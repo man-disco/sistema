@@ -1,5 +1,5 @@
 # Como Instalar e Executar o Projeto
-## Clonar o Repositório:
+## Clone o Repositório:
 Rode o comando: 
 `git clone https://github.com/man-disco/sistema-cad.git`
 
