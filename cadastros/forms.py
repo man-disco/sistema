@@ -1,6 +1,5 @@
 from django import forms
 from .models import Cadastro
-from phonenumber_field.modelfields import PhoneNumberField
 
 
 class NovoCadastro(forms.ModelForm):

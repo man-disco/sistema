@@ -41,8 +41,6 @@ INSTALLED_APPS = [
     'cadastros',
     'usuarios',
     'vendas',
-    # Aplicações de terceiros
-    'phonenumber_field',
 ]
 
 MIDDLEWARE = [
@@ -152,8 +150,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # URL Login page
 
 LOGIN_URL = 'usuarios/login'
-
-# Configurações de região para o app django-phonumberfield
-
-PHONENUMBER_DEFAULT_REGION = 'BR'
-PHONENUMBER_DB_FORMAT = 'NATIONAL'
