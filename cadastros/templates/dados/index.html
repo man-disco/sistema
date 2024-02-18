@@ -5,7 +5,7 @@
 {% block content %}
 
     <h2>Olá {{ request.user | capfirst }}</h2>
-    {{ data_atual }}
+    {{ data_atual | date:'l - d/m/y'}}
     <div class="menu">
         <a href="{% url 'cadastros' %}">Cadastros</a>
         <a href="{% url 'perfil' %}">Meu Perfil</a>

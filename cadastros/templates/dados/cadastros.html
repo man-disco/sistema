@@ -4,59 +4,59 @@
 
 {% block content %}
 
-    <h2>Cadastros</h2>
-    <div id="div_pesquisa">
-        <p>
-            <form id="barra_pesquisa" action="{% url 'pesquisa' %}" method="get">
-            <label for="barra_pesquisa">Pesquisar Cadastros:</label>
-                {% csrf_token %}
-                <select name="filtro" id="filtro">
-                    <option selected>Nome</option>
-                    <option>ID</option>
-                    <option>Nome</option>
-                    <option>Endereço</option>
-                </select>
-                <input name="query" type="text" placeholder="Pesquisar Cadastros" required>
-                <button action="submit">Pesquisar</button>
-            </form>
-            <p>
-                <a href="{% url 'novo_cadastro' %}">Criar Novo Cadastro</a>
-            </p>
-        </p>
-    </div>
-    <table style="text-align: center">
-        <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Endereço</th>
-            <th>Data de Nascimento</th>
-            <th>Sexo</th>
-            <th>Telefone</th>
-            <th>📝</th>
-        </tr>
-        <tr>
+<h2>Cadastros</h2>
+<div id="div_barra_pesquisa">
+    <p>
+    <form id="barra_pesquisa" action="{% url 'pesquisa' %}" method="get">
+        <label for="barra_pesquisa">Pesquisar Cadastros:</label>
+        {% csrf_token %}
+        <select name="filtro" id="filtro">
+            <option selected>Nome</option>
+            <option>ID</option>
+            <option>Nome</option>
+            <option>Endereço</option>
+        </select>
+        <input name="query" type="text" placeholder="Pesquisar Cadastros" required>
+        <button action="submit">Pesquisar</button>
+    </form>
+    <p>
+        <a href="{% url 'novo_cadastro' %}">Criar Novo Cadastro</a>
+    </p>
+    </p>
+</div>
+<table style="text-align: center">
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Endereço</th>
+        <th>Data de Nascimento</th>
+        <th>Sexo</th>
+        <th>Telefone</th>
+        <th>📝</th>
+    </tr>
+    <tr>
         {% for cadastro in obj_pagina %}
-            <tr>
-                <td>{{ cadastro.id }}</td>
-                <td>{{ cadastro.nome | title }}</td>
-                <td>{{ cadastro.endereço }}</td>
-                <td>{{ cadastro.data_nascimento | date:'d/m/Y'}}</td>
-                <td>{{ cadastro.sexo }}</td>
-                <td>{{ cadastro.telefone.as_national }}</td>
-                <td><a href="{% url 'editar_cadastro' cadastro.id %}">Editar</a></td>
-            </tr>
-        {% empty %}
-            <tr>
-                <td colspan="7">Nenhum Cadastro Encontrado.</td>
-            </tr>
+    <tr>
+        <td>{{ cadastro.id }}</td>
+        <td>{{ cadastro.nome }}</td>
+        <td>{{ cadastro.endereço | slice:50}}...</td>
+        <td>{{ cadastro.data_nascimento | date:'d/m/Y'}}</td>
+        <td>{{ cadastro.sexo }}</td>
+        <td>{{ cadastro.telefone }}</td>
+        <td><a href="{% url 'editar_cadastro' cadastro.id %}">Editar</a></td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="7">Nenhum Cadastro Encontrado.</td>
+    </tr>
+    {% endfor %}
+</table>
+<div>
+    <p>Páginas:
+        {% for pagina in obj_pagina.paginator.page_range %}
+        <a href="?pagina={{ pagina }}">{{ pagina }}</a>
         {% endfor %}
-    </table>
-    <div>
-        <p>Páginas:
-            {% for pagina in obj_pagina.paginator.page_range %}
-                <a href="?pagina={{ pagina }}">{{ pagina }}</a>
-            {% endfor %}
-        </p>
-    </div>
+    </p>
+</div>
 
 {% endblock content %}

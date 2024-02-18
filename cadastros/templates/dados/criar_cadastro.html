@@ -3,7 +3,6 @@
 {% block title %}Criar Novo Cadastro{% endblock title %}
 
 {% block content %}
-
     <div>
         <h2>Criar Novo Cadastro</h2>
         <form href="." method="post">
@@ -11,8 +10,9 @@
             {% for input in form %}
                 <ul>
                     {% if input.errors %}
-                        {% for error in input.errors  %}
-                            <strong><p>{{ error | title }}</p></strong>
+                        {% for error in input.errors %}
+                            <div style="color: red">{{ error }}</div>
+                            <br><br>
                         {% endfor %}
                     {% endif %}
                     {{ input.label }}:
@@ -20,7 +20,7 @@
                     {{ input }}
                 </ul>
             {% endfor %}
-            <input type="submit" value="Salvar">
+            <input type="submit" value="Criar Cadastro">
         </form>
     </div>
     <script>
@@ -33,5 +33,4 @@
     <p>
         <a href="{% url 'cadastros' %}">Voltar</a>
     </p>
-    
 {% endblock content %}

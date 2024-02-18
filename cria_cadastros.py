@@ -25,7 +25,8 @@ def gera_cadastros(quantidade=20):
         sexo = choice(OPC_SEXO)
         data_nascimento = fake.date_of_birth()
         telefone = gera_numero_telefone()
-
+        alterado_por = 'UsuárioTeste'
+        criado_por = 'UsuárioTeste'
         cadastro = Cadastro.objects.create(nome=nome, endereço=endereço, sexo=sexo, telefone=telefone, data_nascimento=data_nascimento)
 
 

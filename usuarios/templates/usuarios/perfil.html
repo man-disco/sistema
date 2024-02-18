@@ -1,8 +1,5 @@
 {% extends 'dados/base.html' %}
 
-{% load humanize %}
-{% load i18n %} 
-
 {% block title %}Meu Perfil{% endblock title %}
 
 {% block content %}
@@ -14,13 +11,16 @@
         <li>Email: {{user.email}}</li>
         <li>Criado em: {{user.date_joined | date:'d/m/y (l) - H:m:s'}}</li>
     </ul>
-    <h4>Suas permissões:</h4>
+    <h2>Suas permissões:</h2>
         {% comment %}
             So mostra as permissões se o usuário logado tiver alguma do módulo e de forma organizada em lista
         {% endcomment %}
-    <ul>
+    <ul>{# Mostra se o usuário é um administrador #}
+        {% if user.is_superuser %}
+            Cargo: Administrador
+        {% endif %}
         {% if perms.cadastros %}
-            <li><h4>Cadastros</h4></li>
+            <li><h4>Môdulo Cadastros</h4></li>
             <ul id="permissions_cadastros">
                 {% if perms.cadastros.add_cadastro %}
                     <li>Pode adicionar cadastros.</li>
@@ -37,7 +37,7 @@
             </ul>
         {% endif %}
         {% if perms.vendas %}
-            <li><h4>Vendas</h4></li>
+            <li><h4>Môdulo Vendas</h4></li>
             <ul id="permissions_vendas">
                 {% if perms.vendas.add_venda %}
                     <li>Pode adicionar vendas.</li>

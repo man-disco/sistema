@@ -17,7 +17,7 @@
     <h2>Resultados da pesquisa por {{ filtro }}: {{ pesquisa }}</h2>
     <ul>
     {% for pessoa in resultado %}
-        <li><a href="{% url 'editar_cadastro' pessoa.id %}">{{ pessoa }}</li>
+        <li><a href="{% url 'editar_cadastro' pessoa.id %}">{{ pessoa }}</a></li>
     {% empty %}
         Não foi encontrado nenhum resultado.
     {% endfor %}

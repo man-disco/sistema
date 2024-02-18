@@ -1,6 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
 from django.contrib.auth.decorators import login_required, permission_required
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, Http404
 from cadastros.models import Cadastro
 from .models import Venda
 
@@ -10,7 +10,7 @@ from .models import Venda
 @permission_required('vendas.view_venda', raise_exception=True)
 def index(request):
     """"""
-    return HttpResponse("Vendas aqui :)")
+    return render(request, 'index.html')
 
 
 @login_required(login_url='login')
@@ -18,9 +18,9 @@ def index(request):
 def visualizar_vendas_cliente(request, cadastro_id):
     """"""
     try:
-        cliente = get_object_or_404(Cadastro, pk=cadastro_id)
-    except Exception as error:
-        HttpResponse(f'Erro! {{error}}')
+        cliente = Cadastro.objects.get(id=cadastro_id)
+    except Cadastro.DoesNotExist:
+        raise Http404("Cadastro não existe...")
     vendas = Venda.objects.filter(cliente=cliente).order_by('data_da_venda')
     context = {'cliente': cliente, 'vendas': vendas}
     return render(request, 'vendas_cliente.html', context)

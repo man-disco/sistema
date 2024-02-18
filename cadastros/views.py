@@ -1,11 +1,11 @@
 from django.shortcuts import render, reverse, get_object_or_404
 from django.db.models import Q
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, Http404
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required, permission_required
 from django.utils import timezone
 from .models import Cadastro
-from .forms import NovoCadastro, DeletarCadastro
+from .forms import NovoCadastro
 
 
 # Create your views here.
@@ -20,7 +20,7 @@ def index(request):
 @login_required(login_url='login')
 @permission_required('cadastros.view_cadastro', raise_exception=True)
 def cadastros(request):
-    """Mostra todos os cadastros existentes."""
+    """Mostra todos os cadastros existentes e os retorna ao usuário."""
 
     cadastros = Cadastro.objects.all()
     paginas = Paginator(cadastros, 10)
@@ -33,7 +33,7 @@ def cadastros(request):
 @login_required(login_url='login')
 # Se o usuário não tiver a permissão para adicionar (ou visualizar) cadastros, a página retorna um erro 403.
 @permission_required('cadastros.add_cadastro', raise_exception=True)
-def novo_cadastro(request):
+def criar_cadastro(request):
     """Cria um novo registro no banco de dados."""
 
     # Cria um novo formulário e salva os dados inseridos nele (caso a requisição seja POST).
@@ -48,7 +48,7 @@ def novo_cadastro(request):
     else:
         form = NovoCadastro()
     context = {"form": form}
-    return render(request, "dados/novo_cadastro.html", context)
+    return render(request, "dados/criar_cadastro.html", context)
 
 
 # Se o usuário não tiver a permissão para adicionar (ou visualizar) cadastros, a página retorna um erro 403.
@@ -94,9 +94,14 @@ def resultado_pesquisa(request):
     filtro = request.GET.get("filtro")
     pesquisa = request.GET.get("query")
 
+
     # Cria filtros com base na seleção do usuário e retorna os resultados correspondentes.
     if filtro == "ID":
-        resultado = Cadastro.objects.filter(id=pesquisa)
+        try:
+            resultado = Cadastro.objects.filter(id=pesquisa)
+        except ValueError:
+            # Se o valor de resultado com o filtro de ID for ínvalido, a variável resultado não é definida com um valor.
+            resultado = None
     if filtro == "Nome":
         resultado = Cadastro.objects.filter(Q(nome__icontains=pesquisa))
     if filtro == "Endereço":

@@ -17,13 +17,13 @@
 
     <form href="." method="POST">
         {% csrf_token %}
-        <input type="hidden", value="{{ cadastro.id }}", name="deletar">
+        <input type="hidden", value="true", name="deletar">
         <h4>Deseja mesmo deletar este cadastro?</h4>
         <button action="submit">Confirmar</button>
     </form>
 
     <p>
-        <a href="{% url 'cadastros' %}">
+        <a href="{% url 'editar_cadastro' cadastro.id %}">
             <button>Voltar</button>
         </a>
     </p>

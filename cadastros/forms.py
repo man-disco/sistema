@@ -16,11 +16,3 @@ class NovoCadastro(forms.ModelForm):
             'data_nascimento': forms.DateInput(attrs={'placeholder': 'Ex: 99/99/9999'}),
             'telefone': forms.TextInput(attrs={'placeholder': 'Ex: (99) 99999-9999'}),
         }
-        input_formats = {
-            'data_nascimento': ['%m/%d/%Y'],
-        }
-
-class DeletarCadastro(forms.Form):
-    """Deleta um cadastro."""
-    
-    deletar = forms.DurationField()

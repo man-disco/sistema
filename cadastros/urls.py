@@ -21,7 +21,7 @@ from . import views
 urlpatterns = [
     path('', views.index, name="index"),
     path('cadastros/', views.cadastros, name='cadastros'),
-    path('cadastros/novo_cadastro', views.novo_cadastro, name='novo_cadastro'),
+    path('cadastros/criar_cadastro', views.criar_cadastro, name='novo_cadastro'),
     path('cadastros/deletar_cadastro/<int:cadastro_id>', views.deletar_cadastro, name='deletar_cadastro'),
     path('cadastros/editar_cadastro/<int:cadastro_id>', views.editar_cadastro, name='editar_cadastro'),
     path('cadastros/deletar_cadastro/<int:cadastro_id>', views.deletar_cadastro, name='deletar_cadastro'),

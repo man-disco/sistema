@@ -3,38 +3,36 @@
 {% block title %}Editar Cadastro{% endblock title %}
 
 {% block content %}
-
     <div>
-        <h2>Editar cadastro</h2>
-        <a href="{% url 'deletar_cadastro' cadastro.id %}">Deletar Cadastro</a>
-        <p>Ultima alteração: {{ cadastro.alterado_em }} - {{ cadastro.alterado_por | capfirst }}</p>
+        <h2>Editar Cadastro</h2>
+        <a href="{% url 'deletar_cadastro' cadastro.id %}">Deletar Cadastro<a>
+        <p>Última alteração: {{ cadastro.alterado_em }} - {{ cadastro.alterado_por }}</p>
         <form href="." method="post">
             {% csrf_token %}
             {% for input in form %}
                 <ul>
-                    {% if input.errors %}
-                        {% for error in input.errors  %}
-                            <strong><p>{{ error }}</p></strong>
-                        {% endfor %}
-                    {% endif %}
-                    {{ input.label }}
+    
+                    {{ input.label }}:
                     <br>
                     {{ input }}
+                    {% if input.errors %}
+                        {% for error in input.errors %}
+                            <div style="color: red">{{ error }}</div>
+                        {% endfor %}
+                    {% endif %}
                 </ul>
             {% endfor %}
-            <input type="submit" value="Salvar">
+            <input type="submit" value="Salvar Alterações">
         </form>
-
-        <p>
-            <a href="{% url 'cadastros' %}">Voltar</a>
-        </p>
     </div>
     <script>
         $(document).ready(function() {
             // Aplica a máscara pro campo 'data_nascimento' e 'telefone'.
             $('#id_data_nascimento').mask('00/00/0000');
-            $('#id_telefone').mask('+00 (00) 00000-0000');
+            $('#id_telefone').mask('(00) 00000-0000');
         });
     </script>
-    
+    <p>
+        <a href="{% url 'cadastros' %}">Voltar</a>
+    </p>
 {% endblock content %}
